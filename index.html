@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.508">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Metrum Research Group">
+<meta name="dcterms.date" content="2022-08-31">
+
+<title>Get Started with mrgsolve</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="index_files/libs/quarto-html/anchor.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#scope" id="toc-scope" class="nav-link active" data-scroll-target="#scope">Scope</a></li>
+  <li><a href="#about-mrgsolve" id="toc-about-mrgsolve" class="nav-link" data-scroll-target="#about-mrgsolve">About <code>mrgsolve</code></a>
+  <ul class="collapse">
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
+  <li><a href="#orientation" id="toc-orientation" class="nav-link" data-scroll-target="#orientation">Orientation</a></li>
+  <li><a href="#what-we-will-cover-today" id="toc-what-we-will-cover-today" class="nav-link" data-scroll-target="#what-we-will-cover-today">What we will cover today</a></li>
+  </ul></li>
+  <li><a href="#three-basic-simulation-workflows" id="toc-three-basic-simulation-workflows" class="nav-link" data-scroll-target="#three-basic-simulation-workflows">Three (basic) simulation workflows</a>
+  <ul class="collapse">
+  <li><a href="#single-profile" id="toc-single-profile" class="nav-link" data-scroll-target="#single-profile">Single profile</a>
+  <ul class="collapse">
+  <li><a href="#event-object" id="toc-event-object" class="nav-link" data-scroll-target="#event-object">Event object</a></li>
+  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot">Plot</a></li>
+  <li><a href="#control-time-span-of-the-simulation" id="toc-control-time-span-of-the-simulation" class="nav-link" data-scroll-target="#control-time-span-of-the-simulation">Control time span of the simulation</a></li>
+  <li><a href="#more-complicated-events" id="toc-more-complicated-events" class="nav-link" data-scroll-target="#more-complicated-events">More-complicated events</a></li>
+  <li><a href="#event-sequence" id="toc-event-sequence" class="nav-link" data-scroll-target="#event-sequence">Event sequence</a></li>
+  </ul></li>
+  <li><a href="#batch" id="toc-batch" class="nav-link" data-scroll-target="#batch">Batch</a>
+  <ul class="collapse">
+  <li><a href="#create-an-idata-set" id="toc-create-an-idata-set" class="nav-link" data-scroll-target="#create-an-idata-set">Create an idata set</a></li>
+  <li><a href="#simulate-with-event-object" id="toc-simulate-with-event-object" class="nav-link" data-scroll-target="#simulate-with-event-object">Simulate with event object</a></li>
+  </ul></li>
+  <li><a href="#population" id="toc-population" class="nav-link" data-scroll-target="#population">Population</a>
+  <ul class="collapse">
+  <li><a href="#read-a-nmtran-like-data-set" id="toc-read-a-nmtran-like-data-set" class="nav-link" data-scroll-target="#read-a-nmtran-like-data-set">Read a NMTRAN like data set</a></li>
+  <li><a href="#some-other-ways-to-create-population-inputs" id="toc-some-other-ways-to-create-population-inputs" class="nav-link" data-scroll-target="#some-other-ways-to-create-population-inputs">Some other ways to create population inputs</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#get-work-done" id="toc-get-work-done" class="nav-link" data-scroll-target="#get-work-done">Get work done</a>
+  <ul class="collapse">
+  <li><a href="#work-with-output" id="toc-work-with-output" class="nav-link" data-scroll-target="#work-with-output">Work with output</a></li>
+  <li><a href="#coerce-output" id="toc-coerce-output" class="nav-link" data-scroll-target="#coerce-output">Coerce output</a></li>
+  <li><a href="#corerce-via-dplyr-verbs" id="toc-corerce-via-dplyr-verbs" class="nav-link" data-scroll-target="#corerce-via-dplyr-verbs">Corerce via dplyr verbs</a></li>
+  <li><a href="#return-data-frame" id="toc-return-data-frame" class="nav-link" data-scroll-target="#return-data-frame">Return data frame</a></li>
+  <li><a href="#carry-out" id="toc-carry-out" class="nav-link" data-scroll-target="#carry-out">Carry-Out</a></li>
+  <li><a href="#recover" id="toc-recover" class="nav-link" data-scroll-target="#recover">Recover</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Get Started with mrgsolve</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Metrum Research Group </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 31, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="scope" class="level1">
+<h1>Scope</h1>
+<p>This document is a very brief introduction to mrgsolve basics. Please see our main portal at <a href="https://mrgsolve.org">mrgsolve.org</a> for more resources.</p>
+</section>
+<section id="about-mrgsolve" class="level1">
+<h1>About <code>mrgsolve</code></h1>
+<ul>
+<li><code>R</code> package for simulation from ODE-based models
+<ul>
+<li>Free, OpenSource, GitHub, CRAN</li>
+</ul></li>
+<li>Language
+<ul>
+<li>Models written in <code>C++</code> inside model specification format</li>
+<li>General purpose solver: <code>ODEPACK</code> / <code>DLSODA</code> (<code>FORTRAN</code>)
+<ul>
+<li>Automatically detect and switch between non-stiff (Adams) and stiff (BDF) methods for solving the differential equations</li>
+</ul></li>
+<li>Simulation workflow in <code>R</code></li>
+</ul></li>
+<li>Hierarchical (population) simulation
+<ul>
+<li><code>ID</code>, <span class="math inline">\(\eta\)</span>, <span class="math inline">\(\varepsilon\)</span></li>
+</ul></li>
+<li>Integrated PK functionaility
+<ul>
+<li>Bolus, infusion, <code>F</code>, <code>ALAG</code>, <code>SS</code> etc, handled under the hood</li>
+<li>1- and 2-cmt PK models in closed-form</li>
+</ul></li>
+<li>Extensible using <code>R</code>, <code>C++</code>, <code>Rcpp</code>, <code>boost</code>, <code>RcppArmadillo</code></li>
+<li><code>R</code> is it’s natural habitat</li>
+</ul>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<ul>
+<li>Motivation: large bone/mineral homeostatsis model (CaBone)</li>
+<li>History using
+<ul>
+<li>Berkeley Madonna</li>
+<li>WinBUGS</li>
+<li>NONMEM (attempted)</li>
+</ul></li>
+<li>2010: write <code>R</code> front end to <code>deSolve</code></li>
+<li>2012: write <code>C++</code> interface to <code>DLSODA</code></li>
+<li>Develop dosing / event capability</li>
+<li>More recently, expose functionality provided by
+<ul>
+<li><code>Rcpp</code> - vectors, matrices, functions, environments, random numbers</li>
+<li><code>boost</code> - numerical tools in <code>C++</code></li>
+<li>users’ own <code>C++</code> code (functions, data structures, classes)</li>
+</ul></li>
+<li>Translator from <code>SBML</code> to <code>mrgsolve</code> using <code>R</code> bindings to <code>libSBML</code></li>
+</ul>
+</section>
+<section id="orientation" class="level2">
+<h2 class="anchored" data-anchor-id="orientation">Orientation</h2>
+<ul>
+<li><p>https://CRAN.R-project.org/package=mrgsolve</p></li>
+<li><p>GitHub site: https://github.com/metrumresearchgroup/mrgsolve</p></li>
+<li><p>Issues and questions: https://github.com/metrumresearchgroup/mrgsolve/issues</p></li>
+<li><p>mrgsolve website: https://mrgsolve.github.io</p></li>
+<li><p>User Guide: https://mrgsolve.github.io/user_guide</p></li>
+<li><p>Blog: https://mrgsolve.github.io/blog</p></li>
+<li><p>Vignettes: https://mrgsolve.github.io/vignettes</p></li>
+<li><p>Compare against NONMEM: https://github.com/mrgsolve/nmtests</p></li>
+</ul>
+</section>
+<section id="what-we-will-cover-today" class="level2">
+<h2 class="anchored" data-anchor-id="what-we-will-cover-today">What we will cover today</h2>
+<ol type="1">
+<li>Three basic workflows</li>
+<li>Loading the model into R</li>
+<li>Event objects</li>
+<li>Data sets</li>
+</ol>
+<p>Emphasis is on getting you running your own simulations today.</p>
+</section>
+</section>
+<section id="three-basic-simulation-workflows" class="level1">
+<h1>Three (basic) simulation workflows</h1>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mrgsolve)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Single profile</li>
+<li>Batch</li>
+<li>Population</li>
+</ul>
+<p>These aren’t entirely different, but I like to organize this way. When I’m planning an simulation, I first think “what type of output do I want?” and the answer to that question directs me on what to do next.</p>
+<section id="single-profile" class="level2">
+<h2 class="anchored" data-anchor-id="single-profile">Single profile</h2>
+<p>This is how we load a simulation model into mrgsolve.</p>
+<p>Load a two-compartment model from the internal library</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">modlib</span>(<span class="st">"pk2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We now have a 2-compartment PK model with which we can simulate. It is important to know how this works and we will talk in depth about this. But for now, let’s simulate some stuff.</p>
+<p>First, we’ll just simulate from this model object (<code>mrgsim()</code>)</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mrgsim</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. Model:  pk2 
+. Dim:    25 x 6 
+. Time:   0 to 24 
+. ID:     1 
+.     ID time EV CENT PERIPH CP
+. 1:   1    0  0    0      0  0
+. 2:   1    1  0    0      0  0
+. 3:   1    2  0    0      0  0
+. 4:   1    3  0    0      0  0
+. 5:   1    4  0    0      0  0
+. 6:   1    5  0    0      0  0
+. 7:   1    6  0    0      0  0
+. 8:   1    7  0    0      0  0</code></pre>
+</div>
+</div>
+<p>In the output</p>
+<ul>
+<li>Essentially a data frame of simulated data
+<ul>
+<li>First column <code>ID</code></li>
+<li>Second column: <code>time</code></li>
+<li>Next columns: compartments</li>
+<li>Last columns: derived quantities</li>
+</ul></li>
+</ul>
+<p><strong><em>Investigate the model object a bit</em></strong></p>
+<ul>
+<li>overview</li>
+</ul>
+<div class="cell" data-layout-align="center">
+
+</div>
+<ul>
+<li>parameters</li>
+</ul>
+<div class="cell" data-layout-align="center">
+
+</div>
+<ul>
+<li>compartments</li>
+</ul>
+<div class="cell" data-layout-align="center">
+
+</div>
+<ul>
+<li>outputs</li>
+</ul>
+<div class="cell" data-layout-align="center">
+
+</div>
+<section id="event-object" class="level3">
+<h3 class="anchored" data-anchor-id="event-object">Event object</h3>
+<p>Now, we’ll create an “event object” to simulate from. This is just a concise statement of some intervention. Like a one-liner … easy to make.</p>
+<p>Let’s do 100 mg x1 to the first compartment, then simulate:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mrgsim</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. Model:  pk2 
+. Dim:    26 x 6 
+. Time:   0 to 24 
+. ID:     1 
+.     ID time       EV  CENT PERIPH    CP
+. 1:   1    0   0.0000  0.00  0.000 0.000
+. 2:   1    0 100.0000  0.00  0.000 0.000
+. 3:   1    1  36.7879 58.21  3.253 2.911
+. 4:   1    2  13.5335 72.56  8.790 3.628
+. 5:   1    3   4.9787 72.43 13.823 3.621
+. 6:   1    4   1.8316 68.18 17.695 3.409
+. 7:   1    5   0.6738 63.31 20.438 3.165
+. 8:   1    6   0.2479 58.86 22.258 2.943</code></pre>
+</div>
+</div>
+<p>We use <code>ev()</code> to create a set of intervention(s) for the simulation. Here, it is just a single 100 mg dose into the first compartment. The event object looks like this:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. Events:
+.   time amt cmt evid
+. 1    0 100   1    1</code></pre>
+</div>
+</div>
+<p>We have the following columns</p>
+<ol type="1">
+<li><code>time</code> - whatever is your model time</li>
+<li><code>amt</code> - whatever is the mass unit for your compartments</li>
+<li><code>cmt</code> could be number or name</li>
+<li><code>evid</code> just like nonmem - mostly using 1</li>
+</ol>
+<p>You can also use:<br>
+- <code>rate</code> - infusion<br>
+- <code>ss</code> - steady state (1 or 2)<br>
+- <code>ii</code> - interdose interval<br>
+- <code>addl</code> - additional doses<br>
+- <code>tinf</code> - infusion time (rather than <code>rate</code>)<br>
+- <code>total</code> - total number of doses (rather than <code>addl</code>)</p>
+<p>See <code>?ev</code></p>
+</section>
+<section id="plot" class="level3">
+<h3 class="anchored" data-anchor-id="plot">Plot</h3>
+<p>Simulate 100 mg x1 again and now we pipe it to <code>plot()</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mrgsim</span>() <span class="sc">%&gt;%</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="control-time-span-of-the-simulation" class="level3">
+<h3 class="anchored" data-anchor-id="control-time-span-of-the-simulation">Control time span of the simulation</h3>
+<p>I would like this to look a little nicer.</p>
+<ul>
+<li>100 mg x1<br>
+</li>
+<li>Run the end of the simulation out to 72 hours with delta 0.1</li>
+<li>Make the line smoother<br>
+</li>
+<li>Plot the result</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mrgsim</span>(<span class="at">end =</span> <span class="dv">72</span>, <span class="at">delta =</span> <span class="fl">0.1</span>) <span class="sc">%&gt;%</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can make this change permanent</p>
+<ul>
+<li>end: 72 hours</li>
+<li>delta: 0.1 hours</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">update</span>(mod, <span class="at">end =</span> <span class="dv">72</span>, <span class="at">delta =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="more-complicated-events" class="level3">
+<h3 class="anchored" data-anchor-id="more-complicated-events">More-complicated events</h3>
+<p>We said that the <code>event</code> objects were simple. But we can combine them to make more complicated sequences.</p>
+<p>Let’s load a PK model for azithromycin (<code>azithro-single</code>):</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mread</span>(<span class="st">"azithro-single"</span>, <span class="at">project =</span> <span class="st">"model"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Check out the model</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mod</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. 
+. 
+. ------------  source: azithro-single.cpp  ------------
+. 
+.   project: /Users/kyleb/git.../basics/model
+.   shared object: azithro-single-so-1485d5d385f3c 
+. 
+.   time:          start: 0 end: 240 delta: 0.1
+.                  add: &lt;none&gt;
+. 
+.   compartments:  GUT CENT PER2 PER3 [4]
+.   parameters:    TVCL TVV1 TVQ2 TVV2 Q3 V3 KA WT [8]
+.   captures:      CP [1]
+.   omega:         0x0 
+.   sigma:         0x0 
+. 
+.   solver:        atol: 1e-08 rtol: 1e-08 maxsteps: 20k
+. ------------------------------------------------------</code></pre>
+</div>
+</div>
+<p>Create an event object to implement the z-pak dose:</p>
+<ul>
+<li>500 mg po on day 1 (<code>load</code>)</li>
+<li>250 mg po daily on days 2 through 5 (<code>continue</code>)</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>load <span class="ot">&lt;-</span> <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">500</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>continue <span class="ot">&lt;-</span> <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">250</span>, <span class="at">ii =</span> <span class="dv">24</span>, <span class="at">addl =</span> <span class="dv">3</span>, <span class="at">time =</span> <span class="dv">24</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>zpak <span class="ot">&lt;-</span> <span class="fu">c</span>(load, continue)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Look at the zpak dosing object</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>zpak</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. Events:
+.   time amt cmt evid ii addl
+. 1    0 500   1    1  0    0
+. 2   24 250   1    1 24    3</code></pre>
+</div>
+</div>
+<p>We can also accompilsh this just with 250 mg tablets</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>zpak <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">250</span>), <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">250</span>, <span class="at">ii =</span> <span class="dv">24</span>, <span class="at">addl =</span> <span class="dv">4</span>))</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>zpak</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. Events:
+.   time amt cmt evid ii addl
+. 1    0 250   1    1  0    0
+. 2    0 250   1    1 24    4</code></pre>
+</div>
+</div>
+<p>Now, simulate and plot from the zpak event object</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mrgsim</span>(mod, zpak) <span class="sc">%&gt;%</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="event-sequence" class="level3">
+<h3 class="anchored" data-anchor-id="event-sequence">Event sequence</h3>
+<ul>
+<li>100 mg daily x 7 <strong>then</strong><br>
+</li>
+<li>50 mg BID x7</li>
+</ul>
+<div class="cell" data-layout-align="center">
+
+</div>
+</section>
+</section>
+<section id="batch" class="level2">
+<h2 class="anchored" data-anchor-id="batch">Batch</h2>
+<p>Let’s use our fixed-effects azithromycin model to look at how weight affects PK. We’ll use that <code>zpak</code> object that we created in the previous section.</p>
+<section id="create-an-idata-set" class="level3">
+<h3 class="anchored" data-anchor-id="create-an-idata-set">Create an idata set</h3>
+<p>Now, let’s make a data frame that contains the weights that we want to investigate (from 40 kg to 140 kg by 10 kg).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>wt <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">WT =</span> <span class="fu">seq</span>(<span class="dv">40</span>, <span class="dv">140</span>, <span class="dv">10</span>))</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. # A tibble: 6 × 1
+.      WT
+.   &lt;dbl&gt;
+. 1    40
+. 2    50
+. 3    60
+. 4    70
+. 5    80
+. 6    90</code></pre>
+</div>
+</div>
+<p><strong>IMPORTANT</strong>: the key here is that we have <code>WT</code> as a column in the data set and we have <code>WT</code> as a parameter in the model (look at the parameters)</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">param</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. 
+.  Model parameters (N=8):
+.  name value . name value
+.  KA   0.259 | TVV1 186  
+.  Q3   10.6  | TVV2 2890 
+.  TVCL 100   | V3   2610 
+.  TVQ2 180   | WT   70</code></pre>
+</div>
+</div>
+<p>When we make the names agree, mrgsolve will update the <code>WT</code> parameter as the simulation advances across individuals.</p>
+</section>
+<section id="simulate-with-event-object" class="level3">
+<h3 class="anchored" data-anchor-id="simulate-with-event-object">Simulate with event object</h3>
+<p>Now we can pass this set of weights into the problem as “idata”. We will use just the first record from the zpak dosing object.</p>
+<ul>
+<li>Load the <code>azithro-single</code> model</li>
+<li>Create a dosing event with 500 mg x1</li>
+<li>Simulate with <code>idata</code></li>
+<li>End the simulation at 96 hours</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mread</span>(<span class="st">"azithro-single"</span>, <span class="at">project =</span> <span class="st">"model"</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>load <span class="ot">&lt;-</span> <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">500</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">mrgsim</span>(mod, <span class="at">events =</span> load, <span class="at">idata =</span> wt, <span class="at">end =</span> <span class="dv">96</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Take a quick look at the output (<code>head</code>)</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. Model:  azithro-single 
+. Dim:    10582 x 7 
+. Time:   0 to 96 
+. ID:     11 
+.     ID time   GUT  CENT    PER2    PER3    CP
+. 1:   1  0.0   0.0  0.00  0.0000 0.00000   0.0
+. 2:   1  0.0 500.0  0.00  0.0000 0.00000   0.0
+. 3:   1  0.1 487.2 11.68  0.6712 0.06027 109.9
+. 4:   1  0.2 474.8 21.11  2.5042 0.22543 198.6
+. 5:   1  0.3 462.6 28.69  5.2643 0.47505 270.0
+. 6:   1  0.4 450.8 34.74  8.7577 0.79227 326.9
+. 7:   1  0.5 439.3 39.53 12.8247 1.16317 371.9
+. 8:   1  0.6 428.0 43.27 17.3336 1.57628 407.1</code></pre>
+</div>
+</div>
+<p>Plot the ouptut, looking only at <code>CP</code> and on log scale</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(out, CP <span class="sc">~</span> time,  <span class="at">logy =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This idata set functionality is typically used with an event object (as we have here) but isn’t required.</p>
+</section>
+</section>
+<section id="population" class="level2">
+<h2 class="anchored" data-anchor-id="population">Population</h2>
+<p>The last workflow I’m calling “population”. Here, population just refers to the input data set.</p>
+<p>We can have a data frame that contains many individuals with all different types of dosing interventions. This is just like the data set that you use to do your NONMEM run.</p>
+<section id="read-a-nmtran-like-data-set" class="level3">
+<h3 class="anchored" data-anchor-id="read-a-nmtran-like-data-set">Read a NMTRAN like data set</h3>
+<p>Meropenem PopPK http://repository.ddmore.foundation/model/DDMODEL00000213</p>
+<p>For example, read in <code>data/meropenem.csv</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"data/meropenem.csv"</span>, <span class="at">na =</span> <span class="st">'.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>glimpse the data (<code>head</code>)</li>
+<li>count <code>EVID</code>, <code>DUR</code>, <code>AMT</code></li>
+<li>number of IDs</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. # A tibble: 6 × 13
+.      ID  TIME GROUP    DV   MDV  EVID   AMT  RATE   AGE    WT  CLCR   CMT   DUR
+.   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+. 1     1   0       1 NA        1     1   500  1000  29.7  63.8    83     1   0.5
+. 2     1   0.5     1 31.1     NA     0    NA     0  29.7  63.8    83     0   0.5
+. 3     1   1       1 11.2     NA     0    NA     0  29.7  63.8    83     0   0.5
+. 4     1   2       1  6.21    NA     0    NA     0  29.7  63.8    83     0   0.5
+. 5     1   3       1  4.00    NA     0    NA     0  29.7  63.8    83     0   0.5
+. 6     1   4       1  2.33    NA     0    NA     0  29.7  63.8    83     0   0.5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(data, EVID, DUR, AMT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. # A tibble: 8 × 4
+.    EVID   DUR   AMT     n
+.   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+. 1     0   0.5    NA   280
+. 2     0   3      NA   273
+. 3     1   0.5   500    14
+. 4     1   0.5  1000    13
+. 5     1   0.5  2000    13
+. 6     1   3     500    13
+. 7     1   3    1000    13
+. 8     1   3    2000    13</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(data<span class="sc">$</span>ID))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. [1] 79</code></pre>
+</div>
+</div>
+<p>Now, load the meropenem model (<code>meropenem_pk.cpp</code>, in the <code>model</code> directory)</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mread</span>(<span class="st">"meropenem_pk"</span>, <span class="at">project =</span> <span class="st">"model"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And simulate with <code>mod</code> and <code>data</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">mrgsim</span>(mod, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then plot using <code>Y</code> output</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(out, Y <span class="sc">~</span> TIME)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Resimulate and plot by duration</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">mrgsim</span>(mod, data, <span class="at">carry_out =</span> <span class="st">"DUR"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Plot <code>Y</code> versus <code>TIME</code> by <code>DUR</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(out, Y <span class="sc">~</span> TIME <span class="sc">|</span> DUR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Recall that we have both observations and doses in the data set (as usual for your NONMEM data set)</p>
+<p>Count <code>EVID</code> in <code>data</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(data, EVID)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. # A tibble: 2 × 2
+.    EVID     n
+.   &lt;dbl&gt; &lt;int&gt;
+. 1     0   553
+. 2     1    79</code></pre>
+</div>
+</div>
+<p>When mrgsolve finds records with <code>EVID=0</code> in the data set, it will assume that you have specified every time that you want a simulated value in the data set. In other words the design of the simulated output will match the design of the input data:</p>
+<p>Check <code>dim()</code> in <code>data</code> and <code>out</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. [1] 632  13</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. [1] 632   5</code></pre>
+</div>
+</div>
+<p>Let’s look to see what happens when we don’t include any observation records in the input data:</p>
+<p>Filter into <code>doses</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>doses <span class="ot">&lt;-</span> <span class="fu">filter</span>(data, EVID<span class="sc">==</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we still have the same number of people, with different doses and infusion times.</p>
+<p>Check unique <code>ID</code> and count <code>EVID</code>, <code>AMT</code>, and <code>DUR</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(doses<span class="sc">$</span>ID))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. [1] 79</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(doses, EVID, AMT, DUR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. # A tibble: 6 × 4
+.    EVID   AMT   DUR     n
+.   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+. 1     1   500   0.5    14
+. 2     1   500   3      13
+. 3     1  1000   0.5    13
+. 4     1  1000   3      13
+. 5     1  2000   0.5    13
+. 6     1  2000   3      13</code></pre>
+</div>
+</div>
+<ul>
+<li>Simulate from this sparse data set; end = 8 hours</li>
+<li>Get <code>DUR</code> in to the output</li>
+<li>Plot <code>log(Y)</code> versus <code>time</code> by <code>DUR</code></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> </span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mrgsim</span>(doses, <span class="at">carry_out =</span> <span class="st">"DUR"</span>, <span class="at">end =</span> <span class="dv">8</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(Y<span class="sc">~</span>TIME<span class="sc">|</span><span class="fu">factor</span>(DUR), <span class="at">logy=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The principle is: when mrgsolve does NOT find any observation records, it will fill them in for you according to the time grid that we looked at previously.</p>
+<p>This can be very helpful in reducing the data assembly burden when running your simulations.</p>
+</section>
+<section id="some-other-ways-to-create-population-inputs" class="level3">
+<h3 class="anchored" data-anchor-id="some-other-ways-to-create-population-inputs">Some other ways to create population inputs</h3>
+<ul>
+<li><code>expand.ev()</code> makes all combinations of your inputs
+<ul>
+<li>Sensible defaults are provided</li>
+<li><code>time</code>, <code>cmt</code>, <code>evid</code></li>
+</ul></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">expand.ev</span>(<span class="at">amt =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">300</span>, <span class="dv">1000</span>), <span class="at">ii =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">24</span>))</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>.   ID time  amt ii cmt evid
+. 1  1    0  100 12   1    1
+. 2  2    0  300 12   1    1
+. 3  3    0 1000 12   1    1
+. 4  4    0  100 24   1    1
+. 5  5    0  300 24   1    1
+. 6  6    0 1000 24   1    1</code></pre>
+</div>
+</div>
+<ul>
+<li><code>as_data_set()</code> takes event objects and creates a data frame / set
+<ul>
+<li>100 mg and 300 mg doses daily x7</li>
+<li>20 individuals each</li>
+</ul></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">as_data_set</span>(</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>, <span class="at">ii =</span> <span class="dv">24</span>, <span class="at">total =</span> <span class="dv">7</span>, <span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>), </span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">300</span>, <span class="at">ii =</span> <span class="dv">24</span>, <span class="at">total =</span> <span class="dv">7</span>, <span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="get-work-done" class="level1">
+<h1>Get work done</h1>
+<section id="work-with-output" class="level2">
+<h2 class="anchored" data-anchor-id="work-with-output">Work with output</h2>
+<ul>
+<li><code>names()</code></li>
+<li><code>summary()</code></li>
+<li><code>head()</code></li>
+<li><code>$</code></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">modlib</span>(<span class="st">"pk1"</span>)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">mrgsim</span>(mod)</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. [1] "ID"   "time" "EV"   "CENT" "CP"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>.        ID         time          EV         CENT         CP   
+.  Min.   :1   Min.   : 0   Min.   :0   Min.   :0   Min.   :0  
+.  1st Qu.:1   1st Qu.: 6   1st Qu.:0   1st Qu.:0   1st Qu.:0  
+.  Median :1   Median :12   Median :0   Median :0   Median :0  
+.  Mean   :1   Mean   :12   Mean   :0   Mean   :0   Mean   :0  
+.  3rd Qu.:1   3rd Qu.:18   3rd Qu.:0   3rd Qu.:0   3rd Qu.:0  
+.  Max.   :1   Max.   :24   Max.   :0   Max.   :0   Max.   :0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>.   ID time EV CENT CP
+. 1  1    0  0    0  0
+. 2  1    1  0    0  0
+. 3  1    2  0    0  0
+. 4  1    3  0    0  0
+. 5  1    4  0    0  0
+. 6  1    5  0    0  0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>out<span class="sc">$</span>time[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. [1] 0 1 2 3 4</code></pre>
+</div>
+</div>
+</section>
+<section id="coerce-output" class="level2">
+<h2 class="anchored" data-anchor-id="coerce-output">Coerce output</h2>
+<ul>
+<li>data.frame</li>
+<li>tibble</li>
+<li>matrix</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">mrgsim</span>(mod)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. [1] "mrgsims"
+. attr(,"package")
+. [1] "mrgsolve"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. # A tibble: 25 × 5
+.       ID  time    EV  CENT    CP
+.    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+.  1     1     0     0     0     0
+.  2     1     1     0     0     0
+.  3     1     2     0     0     0
+.  4     1     3     0     0     0
+.  5     1     4     0     0     0
+.  6     1     5     0     0     0
+.  7     1     6     0     0     0
+.  8     1     7     0     0     0
+.  9     1     8     0     0     0
+. 10     1     9     0     0     0
+. # … with 15 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="corerce-via-dplyr-verbs" class="level2">
+<h2 class="anchored" data-anchor-id="corerce-via-dplyr-verbs">Corerce via dplyr verbs</h2>
+<ul>
+<li>Simulate and pipe the output to <code>mutate()</code></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">mrgsim</span>(mod) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">name =</span> <span class="st">"kyle"</span>)</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. [1] "tbl_df"     "tbl"        "data.frame"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. # A tibble: 6 × 6
+.      ID  time    EV  CENT    CP name 
+.   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
+. 1     1     0     0     0     0 kyle 
+. 2     1     1     0     0     0 kyle 
+. 3     1     2     0     0     0 kyle 
+. 4     1     3     0     0     0 kyle 
+. 5     1     4     0     0     0 kyle 
+. 6     1     5     0     0     0 kyle</code></pre>
+</div>
+</div>
+</section>
+<section id="return-data-frame" class="level2">
+<h2 class="anchored" data-anchor-id="return-data-frame">Return data frame</h2>
+<ul>
+<li>Use <code>output</code> argument</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">mrgsim</span>(mod, <span class="at">output =</span> <span class="st">"df"</span>)</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. [1] "data.frame"</code></pre>
+</div>
+</div>
+<ul>
+<li>Use <code>mrgsim_df()</code></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">mrgsim_df</span>(mod)</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. [1] "data.frame"</code></pre>
+</div>
+</div>
+</section>
+<section id="carry-out" class="level2">
+<h2 class="anchored" data-anchor-id="carry-out">Carry-Out</h2>
+<ul>
+<li>100 mg x1</li>
+<li>need <code>dose</code> in the output</li>
+<li>contrast that with getting <code>amt</code> in the output</li>
+</ul>
+<p>First create the event</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>, <span class="at">dose =</span> amt)</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. Events:
+.   time amt cmt evid dose
+. 1    0 100   1    1  100</code></pre>
+</div>
+</div>
+<p>Then recover <code>dose</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mrgsim</span>(mod, <span class="at">events =</span> e, <span class="at">carry_out =</span> <span class="st">"dose"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. Model:  pk1 
+. Dim:    26 x 6 
+. Time:   0 to 24 
+. ID:     1 
+.     ID time dose       EV  CENT    CP
+. 1:   1    0  100   0.0000  0.00 0.000
+. 2:   1    0  100 100.0000  0.00 0.000
+. 3:   1    1  100  36.7879 61.41 3.070
+. 4:   1    2  100  13.5335 81.00 4.050
+. 5:   1    3  100   4.9787 85.36 4.268
+. 6:   1    4  100   1.8316 84.25 4.213
+. 7:   1    5  100   0.6738 81.27 4.063
+. 8:   1    6  100   0.2479 77.72 3.886</code></pre>
+</div>
+</div>
+</section>
+<section id="recover" class="level2">
+<h2 class="anchored" data-anchor-id="recover">Recover</h2>
+<ul>
+<li><code>dose</code>: 100 mg</li>
+<li><code>trt</code>: 100 mg x1</li>
+<li>need <code>dose</code> and <code>trt</code> in the output</li>
+</ul>
+<p>First, create the event</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>, <span class="at">trt =</span> <span class="st">"100 mg x1"</span>, <span class="at">dose =</span> amt)</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. Events:
+.   time amt cmt evid       trt dose
+. 1    0 100   1    1 100 mg x1  100</code></pre>
+</div>
+</div>
+<p>Then simulate and recover <code>trt</code> and <code>amt</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mrgsim</span>(mod, <span class="at">events =</span> e, <span class="at">recover =</span> <span class="st">"trt,amt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. Model:  pk1 
+. Dim:    26 x 7 
+. Time:   0 to 24 
+. ID:     1 
+.     ID time       EV  CENT    CP       trt amt
+. 1:   1    0   0.0000  0.00 0.000 100 mg x1 100
+. 2:   1    0 100.0000  0.00 0.000 100 mg x1 100
+. 3:   1    1  36.7879 61.41 3.070 100 mg x1 100
+. 4:   1    2  13.5335 81.00 4.050 100 mg x1 100
+. 5:   1    3   4.9787 85.36 4.268 100 mg x1 100
+. 6:   1    4   1.8316 84.25 4.213 100 mg x1 100
+. 7:   1    5   0.6738 81.27 4.063 100 mg x1 100
+. 8:   1    6   0.2479 77.72 3.886 100 mg x1 100</code></pre>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
